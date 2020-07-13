@@ -1,0 +1,48 @@
+<!-- Main collection view -->
+<div *ngIf="!details" class="products">
+  <div
+    *ngFor="let product of products; index as i"
+    class="card"
+    style="width: 18rem; height: 32rem;"
+  >
+    <a (click)="clicked(i)">
+      <div class="img-small">
+        <img class="" src="{{ product.image }}" alt="Card image cap" />
+      </div>
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p style="font-size: 15px;" class="card-text">
+        {{ product.description }}
+      </p>
+      <a
+        (click)="clicked(i)"
+        class="button other"
+        style="border-radius: 0.5rem;"
+        >Details</a
+      >
+    </div>
+  </div>
+</div>
+<!-- Details -->
+<br /><br /><br />
+<div *ngIf="details">
+  <div style="text-align: center;">
+    <br />
+    <button style="width: 8rem;" (click)="closeDetail()">Back</button>
+    <br /><br />
+    <h1 style="font-size: 2rem; font-weight: 300; margin-bottom: 0;">
+      {{ products[index].name }}
+    </h1>
+
+    <ul style="list-style: none;">
+      <img src="{{ products[index].image }}" alt="" />
+      <li *ngFor="let specification of products[index].specifications">
+        <h1 style="margin-bottom: 0; font-weight: bold;">
+          {{ specification.title }}
+        </h1>
+        {{ specification.detail }}
+      </li>
+    </ul>
+  </div>
+</div>

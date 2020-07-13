@@ -1,0 +1,3 @@
+import {ProductsModel} from './products';
+
+

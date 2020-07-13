@@ -1,0 +1,84 @@
+version: "3"
+
+services:
+  angular-web:
+    build:
+      context: web
+      dockerfile: Dockerfile
+    container_name: angular-web
+    image: anyata/angular-web
+    restart: unless-stopped
+    command: ng serve --host=0.0.0.0
+    ports:
+      - 4200:4200
+    volumes:
+      - ./web:/app
+    depends_on:
+      - flask-api
+    networks:
+      - frontend
+      - backend
+
+  flask-api:
+    build:
+      context: app
+      dockerfile: Dockerfile
+    container_name: flask-api
+    image: anyata/flask-api
+    restart: unless-stopped
+    command: gunicorn -w 2 -b 0.0.0.0:9300 --access-logfile - app:app
+    ports:
+      - "9300:9300"
+    volumes:
+      - ./app:/trinusa/app
+    depends_on:
+      - mongodb
+    networks:
+      - frontend
+      - backend
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: unless-stopped
+    command: mongod --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: trinusa
+      MONGO_INITDB_ROOT_PASSWORD: p4sstr1nus4!
+      MONGO_INITDB_DATABASE: trinusadb
+      MONGODB_DATA_DIR: /data/db
+      MONDODB_LOG_DIR: /dev/null
+    volumes:
+      - mongodbdata:/data/db
+      - mongodbconfig:/data/configdb
+      - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - backend
+
+  webserver:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    image: anyata/webserver
+    container_name: webserver
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - nginxdata:/var/log/nginx
+    depends_on:
+      - flask-api
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  mongodbdata:
+  mongodbconfig:
+  nginxdata:
