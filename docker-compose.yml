@@ -8,9 +8,12 @@ services:
     container_name: angular-web
     image: anyata/angular-web
     restart: unless-stopped
-    command: ng serve --host=0.0.0.0
+    # command: ng serve --host=0.0.0.0 --disable-host-check
+    volumes:
+      - nginxdata:/var/log/nginx
     ports:
-      - 4200:4200
+      - "80:80"
+      - "443:443"
     depends_on:
       - flask-api
     networks:
@@ -39,9 +42,9 @@ services:
     restart: unless-stopped
     command: mongod --auth
     environment:
-      MONGO_INITDB_ROOT_USERNAME: trinusa
-      MONGO_INITDB_ROOT_PASSWORD: p4sstr1nus4!
-      MONGO_INITDB_DATABASE: trinusadb
+      MONGO_INITDB_ROOT_USERNAME: ${MONGODB_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGODB_ROOT_PASS}
+      MONGO_INITDB_DATABASE: ${MONGODB_INIT_DB}
       MONGODB_DATA_DIR: /data/db
       MONDODB_LOG_DIR: /dev/null
     volumes:
@@ -50,23 +53,6 @@ services:
       - ./mongo/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
     networks:
       - backend
-
-  webserver:
-    build:
-      context: nginx
-      dockerfile: Dockerfile
-    image: anyata/webserver
-    container_name: webserver
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - nginxdata:/var/log/nginx
-    depends_on:
-      - flask-api
-    networks:
-      - frontend
 
 networks:
   frontend:

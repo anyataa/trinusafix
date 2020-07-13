@@ -10,7 +10,7 @@ from db import db
 
 from resources import Item, ItemList
 
-dotenv.load_dotenv(Path('.env'))
+dotenv.load_dotenv(Path('app.env'))
 app = Flask(__name__)
 CORS(app)
 
