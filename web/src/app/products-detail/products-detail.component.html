@@ -1,46 +1,52 @@
 <!------ Include the above in your HEAD tag ---------->
+
 <br /><br /><br /><br /><br />
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+<div *ngIf="!login">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="assets/images/icon.svg" id="icon" alt="User Icon" />
-    </div>
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="assets/images/icon.svg" id="icon" alt="User Icon" />
+      </div>
 
-    <!-- Login Form -->
-    <form>
-      <input
-        type="text"
-        id="login"
-        class="fadeIn second"
-        name="login"
-        placeholder="login"
-      />
-      <input
-        type="text"
-        id="password"
-        class="fadeIn third"
-        name="login"
-        placeholder="password"
-      />
-      <br /><br />
-      <input
-        style="height: 4rem;"
-        type="submit"
-        class="fadeIn fourth"
-        value="Log In"
-      />
-    </form>
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input
+          type="text"
+          id="login"
+          class="fadeIn second"
+          formControlName="admin"
+          placeholder="login"
+        />
+        <input
+          type="text"
+          id="password"
+          class="fadeIn third"
+          formControlName="password"
+          placeholder="password"
+        />
+        <br /><br />
+        <input
+          style="height: 4rem;"
+          type="submit"
+          class="fadeIn fourth"
+          value="Log In"
+        />
+      </form>
 
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
     </div>
   </div>
 </div>
+
 <!-- Login part -->
-<div>
-  <p>This is works</p>
+<div *ngIf="login">
+  <div style="text-align: center;">
+    <h1>Add Item</h1>
+  </div>
 </div>

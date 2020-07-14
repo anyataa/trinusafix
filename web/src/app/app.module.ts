@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,8 @@ import { ProductsDetailComponent } from './products-detail/products-detail.compo
     AppRoutingModule,
     ScrollToModule.forRoot(),
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
     //   delay: 100,
     //   dataEncapsulation: false,

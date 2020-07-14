@@ -8,7 +8,7 @@ import { Items } from '../products.interface';
   styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
-  products: Items;
+  products: Items['items'];
   details = false;
 
   constructor(private productsService: ProductsService) {}

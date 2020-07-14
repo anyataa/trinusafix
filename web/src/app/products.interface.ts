@@ -10,10 +10,11 @@ export interface ProductsModel {
 }
 
 export interface Items {
-  items: any;
-  id: string;
-  name: string;
-  image: string;
-  description: string;
-  specifications: Array<object>;
+  items: {
+    name: string;
+    image: string;
+    description: string;
+    specifications: Array<object>;
+  };
+  data: [object];
 }

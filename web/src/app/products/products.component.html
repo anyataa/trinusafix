@@ -37,11 +37,15 @@
 
     <ul style="list-style: none;">
       <img src="{{ products[index].image }}" alt="" />
-      <li *ngFor="let specification of products[index].specifications">
+      <li
+        *ngFor="let specification of products[index].specifications"
+        style="margin-left: 15rem; margin-right: 15rem;"
+      >
         <h1 style="margin-bottom: 0; font-weight: bold;">
           {{ specification.title }}
         </h1>
         {{ specification.detail }}
+        <br /><br />
       </li>
     </ul>
   </div>

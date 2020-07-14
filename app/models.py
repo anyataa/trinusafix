@@ -2,9 +2,9 @@ from db import db
 
 
 class ItemModel(db.Document):
-    name = db.StringField(required=True)
+    name = db.StringField()
     image = db.URLField()
-    description = db.StringField(required=True)
+    description = db.StringField()
     specifications = db.ListField(db.DictField())
 
     @classmethod

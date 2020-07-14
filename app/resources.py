@@ -35,6 +35,18 @@ class Item(Resource):
         item.save_to_db()
         return json.loads(item.to_json()), 201
 
+    # def post(self):
+    #     data = Item.parser.parse_args()
+    #     # data['name'] = name
+
+    #     if ItemModel.find_by_name(data.name):
+    #         print("test 123")
+    #         return {'message': f'Item {data.name} already exist'}, 400
+
+    #     item = ItemModel(**data)
+    #     item.save_to_db()
+    #     return json.loads(item.to_json()), 201
+
     # def delete(self, name):
     #     data = Item.parser.parse_args()
     #     data['name'] = name
@@ -53,7 +65,12 @@ class Item(Resource):
         if ItemModel.find_by_name(name):
             ItemModel.find_by_name(name).update(**data)
             print('Exist you can put it')
-            return {'message': f' {name} edited this item'}, 400
+            return {'message': f' {name} has been edited'}, 400
+
+    def delete(self, name):
+        item = ItemModel.find_by_name(name=name)
+        item.delete()
+        return {'message': f'{name} has been deleted'}
 
 
 class ItemList(Resource):
