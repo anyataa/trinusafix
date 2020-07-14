@@ -10,67 +10,56 @@ from models import ItemModel
 class Item(Resource):
 
     parser = reqparse.RequestParser()
+    parser.add_argument('name',
+                        type=str,
+                        required=True
+                        )
     parser.add_argument('image',
                         type=str,
                         )
     parser.add_argument('description',
                         type=str,
-                        required=True,
-                        help='This field cannot be left blank!'
                         )
     parser.add_argument('specifications',
                         type=dict,
                         action='append'
                         )
 
-    def post(self, name):
+    def post(self):
         data = Item.parser.parse_args()
-        data['name'] = name
+        name = data['name']
 
         if ItemModel.find_by_name(name):
-            print("test 123")
             return {'message': f'Item {name} already exist'}, 400
 
         item = ItemModel(**data)
         item.save_to_db()
         return json.loads(item.to_json()), 201
 
-    # def post(self):
-    #     data = Item.parser.parse_args()
-    #     # data['name'] = name
-
-    #     if ItemModel.find_by_name(data.name):
-    #         print("test 123")
-    #         return {'message': f'Item {data.name} already exist'}, 400
-
-    #     item = ItemModel(**data)
-    #     item.save_to_db()
-    #     return json.loads(item.to_json()), 201
-
-    # def delete(self, name):
-    #     data = Item.parser.parse_args()
-    #     data['name'] = name
-    #     if not ItemModel.find_by_name(name):
-    #         print('deleted!')
-    #         return {'message': f'item {name} deleted'}, 400
-
-    #     item = ItemModel(**data)
-    #     item.delete_from_db()
-    #     return 'Item deleted!',  400
-
-    def put(self, name):
+    def put(self):
         data = Item.parser.parse_args()
-        data['name'] = name
+        name = data['name']
 
         if ItemModel.find_by_name(name):
-            ItemModel.find_by_name(name).update(**data)
-            print('Exist you can put it')
-            return {'message': f' {name} has been edited'}, 400
+            _data = {}
+            for key in data:
+                if data.get(key):
+                    _data[key] = data[key]
+                    ItemModel.find_by_name(name).update(**_data)
+            return {'message': f'{name} has been edited'}
 
-    def delete(self, name):
-        item = ItemModel.find_by_name(name=name)
-        item.delete()
-        return {'message': f'{name} has been deleted'}
+        item = ItemModel(**data)
+        item.save_to_db()
+        return json.loads(item.to_json())
+
+    def delete(self):
+        data = Item.parser.parse_args()
+        name = data['name']
+
+        if ItemModel.find_by_name(name):
+            ItemModel.find_by_name(name).delete()
+            return {'message': f'{name} has been deleted'}
+        return {'message': 'Failed to delete, item not found'}, 400
 
 
 class ItemList(Resource):
