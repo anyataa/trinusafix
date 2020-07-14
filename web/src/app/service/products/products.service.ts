@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class ProductsService {
-  private productsUrl = 'http://localhost:9300/items';
+  private productsUrl = 'http://45.64.99.144:9300/items';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
