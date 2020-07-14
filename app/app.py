@@ -15,13 +15,12 @@ app = Flask(__name__)
 CORS(app)
 
 app.config['MONGODB_SETTINGS'] = json.loads(os.getenv('MONGODB_SETTINGS'))
-# app.config['CORS_HEADERS'] = 'Content-Type'
+# # app.config['CORS_HEADERS'] = 'Content-Type'
 
 db.init_app(app)
 api = Api(app)
 
-
-api.add_resource(Item, '/item/<string:name>')
+api.add_resource(Item, '/item')
 api.add_resource(ItemList, '/items')
 
 if __name__ == "__main__":

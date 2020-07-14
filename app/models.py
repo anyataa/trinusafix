@@ -16,8 +16,5 @@ class ItemModel(db.Document):
     def save_to_db(self):
         self.save()
 
-    def update_db(self, name):
-        self.update()
-
     def delete_from_db(self):
         self.delete()
