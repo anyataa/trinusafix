@@ -17,4 +17,12 @@ export interface Items {
     specifications: Array<object>;
   };
   data: [object];
+
 }
+
+export interface prod {
+  name: string ;
+  description : string;
+  image: string
+  specifications : [];
+};

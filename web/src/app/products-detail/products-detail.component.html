@@ -1,17 +1,17 @@
-<!------ Include the above in your HEAD tag ---------->
+
 
 <br /><br /><br /><br /><br />
 <div *ngIf="!login">
   <div class="wrapper fadeInDown">
     <div id="formContent">
-      <!-- Tabs Titles -->
 
-      <!-- Icon -->
+
+
       <div class="fadeIn first">
         <img src="assets/images/icon.svg" id="icon" alt="User Icon" />
       </div>
 
-      <!-- Login Form -->
+
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <input
           type="text"
@@ -36,17 +36,24 @@
         />
       </form>
 
-      <!-- Remind Passowrd -->
+<!--       
       <div id="formFooter">
         <a class="underlineHover" href="#">Forgot Password?</a>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
 
 <!-- Login part -->
 <div *ngIf="login">
+  <br>
   <div style="text-align: center;">
-    <h1>Add Item</h1>
+    <h1 style="font-size: 4rem; margin-bottom: 0;">Add Item</h1>
+    <form>
+      <input type="text" name="name" [(ngModel)]="product.name"  placeholder="product name" id="">
+      <input type="text" name="description"  [(ngModel)]="product.description" placeholder="description of product" id="">
+      <input type="text" name="image"  [(ngModel)]="product.image" placeholder="Image URL from imgBB" id="">
+      <input style="height: 4rem;" type="submit" (click)="onPost(product)">
+    </form>
   </div>
 </div>
