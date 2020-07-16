@@ -24,5 +24,10 @@ export interface prod {
   name: string ;
   description : string;
   image: string
-  specifications : [];
+  specifications : [{title:string, 
+                    detail:string}];
 };
+
+export interface name {
+  name:string
+}

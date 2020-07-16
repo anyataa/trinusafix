@@ -36,10 +36,10 @@
         />
       </form>
 
-<!--       
+      
       <div id="formFooter">
-        <a class="underlineHover" href="#">Forgot Password?</a>
-      </div> -->
+        <p class="underlineHover" >{{this.loginMessage}}</p>
+      </div>
     </div>
   </div>
 </div>
@@ -49,11 +49,72 @@
   <br>
   <div style="text-align: center;">
     <h1 style="font-size: 4rem; margin-bottom: 0;">Add Item</h1>
-    <form>
-      <input type="text" name="name" [(ngModel)]="product.name"  placeholder="product name" id="">
+      <!-- <input type="text" name="name" [(ngModel)]="product.name"  placeholder="product name" id="">
       <input type="text" name="description"  [(ngModel)]="product.description" placeholder="description of product" id="">
       <input type="text" name="image"  [(ngModel)]="product.image" placeholder="Image URL from imgBB" id="">
-      <input style="height: 4rem;" type="submit" (click)="onPost(product)">
-    </form>
+      <input style="height: 4rem;" type="submit" (click)="onPost(product)"> -->
   </div>
+<!-- try -->
+
+  <div
+  class="card"
+  style="width: 18rem; height: 68rem;margin-left: 39%; margin-right: 50%;"
+  >
+  <a >
+    <div class="img-small">
+      <img class="" src="assets/images/pic03.jpg" alt="Card image cap" />
+    </div>
+  </a>
+  <div class="card-body">
+    <h5 class="card-title"><input type="text" name="" style="height: 1rem; width: 15rem;" id="" [(ngModel)]="product.name"  placeholder="product name"></h5>
+    <p style="font-size: 15px;" class="card-text">
+      <textarea name="" style="height: 6rem;"  type="multi line" id="" cols="30" rows="10" 
+      [(ngModel)]="product.description"
+      placeholder="Short Description of your Product (up to 10 - 15 words approximately)"></textarea>
+    </p>
+    <p style="text-align: center; color:black;">{{product.specifications[0].title}}</p>
+    <p style="font-size: 15px;" class="card-text">
+      <textarea name="" style="height: 15rem;"  type="multi line" id="" cols="30" rows="10" 
+      [(ngModel)]="product.specifications[0].detail"
+      placeholder="More detailed Description for your product this section can be as long as you want"></textarea>
+    </p>
+    <p style="font-size: 15px; margin-bottom: 0;" class="card-text">
+      <textarea name="" style="height: 6rem;"  type="multi line" id="" cols="30" rows="10" 
+      [(ngModel)]="product.image"
+      placeholder="ImageURL from ImgBB.com  please upload image first to ImgBB"></textarea>
+    </p>
+    <a style="margin-left: 30%;" href="http://www.imgBB.com">go to ImgBB</a>
+    <br><br><br>
+    <a 
+      class="button other"
+      style="border-radius: 0.5rem; width: 15.5rem;"
+      (click)="onPost(product)"
+      >Add Product</a
+    >
+  </div>
+  </div>
+
+  <br><br><br>
+  <h1 style="font-size: 4rem; margin-bottom: 0; text-align: center;">Delete Product</h1>
+<div class="products">
+  <div
+  *ngFor="let product of products; index as i"
+  class="card"
+  style="width: 10rem; height: 10rem;"
+  >
+  <div class="card-body">
+    <h5 class="card-title">{{ product.name }}</h5>
+    <a
+      (click)="onDelete(product.name)"
+      class="button other"
+      style="border-radius: 0.5rem;"
+      >Delete</a
+    >
+  </div>
+  </div>
+  
+  </div>
+  
 </div>
+<br><br><br>
+

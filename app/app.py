@@ -22,6 +22,7 @@ api = Api(app)
 
 api.add_resource(Item, '/item')
 api.add_resource(ItemList, '/items')
+api.add_resource(Delete, '/delete')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=9300, debug=True)

@@ -71,3 +71,22 @@ class ItemList(Resource):
                 ItemModel.objects())
         )
         return {'items': items}
+
+
+
+
+class Delete(Resource):
+    parser = reqparse.RequestParser() 
+    parser.add_argument('name',
+                        type=str,
+                        required=True
+                        )
+    def post(self): 
+        data = Item.parser.parse_args()
+        name = data['name']
+
+        if ItemModel.find_by_name(name):
+            ItemModel.find_by_name(name).delete()
+            return {'message': f'{name} has been deleted'}
+        return {'message': 'Failed to delete, item not found'}, 400
+         

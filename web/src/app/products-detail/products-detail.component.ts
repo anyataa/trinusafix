@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Items, prod } from '../products.interface';
+import { Items, prod, name } from '../products.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ProductsService } from '../service/products/products.service'
 
@@ -16,10 +16,15 @@ export class ProductsDetailComponent implements OnInit {
    name: "",
    description:"",
    image:"",
-   specifications:[]
+   specifications:[{title:"Product Details",
+                    detail:""}]
  };
  
+ productName:name = {
+   name:""
+ };
 
+ data : prod;
 
   loginForm = new FormGroup({
     admin: new FormControl('', Validators.required),
@@ -32,19 +37,23 @@ export class ProductsDetailComponent implements OnInit {
     description: new FormControl('', Validators.required)
   })
 
-  data:any
+  products:Items['items']
   
   login = false;
+  loginMessage=''
 
   constructor(private ps : ProductsService) {}
 
-  ngOnInit(): void { }
+  ngOnInit(): void { this.getProducts() }
 
   onSubmit() {
     const data = this.loginForm.value;
-    if (data.admin === 'admin' && data.password === 'password') {
+    if (data.admin === 'trinusanetwork' && data.password === 'admin-trinusa') {
       console.log('log in success!');
-      this.login = true;
+      this.login = true; 
+    }else{
+      this.loginMessage = "Wrong Password and Username"
+      return this.loginMessage
     }
   }
 
@@ -54,4 +63,20 @@ export class ProductsDetailComponent implements OnInit {
     console.log(prods)
    this.ps.addProduct(prods).subscribe(data => this.data=data) 
   }
+
+  getProducts() {
+    console.log('get!', this.products);
+    this.ps
+      .getProducts()
+      .subscribe((items) => (this.products = items.items));
+  }
+  
+  onDelete(name:string){
+    console.log(name)
+    this.productName.name = name
+    console.log(this.productName)
+    this.ps.deleteProduct(this.productName)
+  }
+
+
 }
