@@ -10,6 +10,7 @@ import { Items, prod, name } from '../../products.interface';
 export class ProductsService {
   private productsUrl = 'http://45.64.99.144:9300/items';
   private changeUrl = 'http://45.64.99.144:9300/item'
+  private deleteUrl = 'http://45.64.99.144:9300/delete'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -31,6 +32,6 @@ export class ProductsService {
   }
 
   deleteProduct(delprod:any){
-    return this.http.request<any>('delete', this.changeUrl, {body:delprod})
+    return this.http.post<any>(this.deleteUrl, delprod, this.httpOptions)
   }
 }
