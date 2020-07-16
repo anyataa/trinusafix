@@ -8,7 +8,7 @@ from flask_restful import Api
 from flask_cors import CORS
 from db import db
 
-from resources import Item, ItemList
+from resources import Item, ItemList, Delete
 
 dotenv.load_dotenv(Path('app.env'))
 app = Flask(__name__)
