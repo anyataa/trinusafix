@@ -7,55 +7,74 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-
-
-	<!-- Header -->
-  <header id="header">
-    <div class="inner">
-      
-      <nav  class="fixed-nav"id="nav">
-        <div class="flexbox">
-          <a [ngxScrollToDuration]="ngxScrollToDuration" 
-          [ngxScrollTo]="'header'" class="logo item" >
-            <img class="img item" src="./assets/images/Logo.png" alt="">
-           </a>
-        </div>
-        <a href="">Home</a>
-        <a style="cursor: pointer;"  
+<!-- Header -->
+<header id="header">
+  <div class="inner">
+    <nav class="fixed-nav" id="nav">
+      <div class="flexbox">
+        <a
+          [ngxScrollToDuration]="ngxScrollToDuration"
+          [ngxScrollTo]="'header'"
+          class="logo item"
+        >
+          <img class="img item" src="./assets/images/Logo.png" alt="" />
+        </a>
+      </div>
+      <a href="">Home</a>
+      <a
+        style="cursor: pointer;"
         *ngFor="let item of navItem"
         [ngxScrollToDuration]="ngxScrollToDuration"
-        [ngxScrollTo]="item[0]" >{{item[1]}}</a>
-         <a  [ngxScrollToDuration]="ngxScrollToDuration"
-         [ngxScrollTo]="'inquiry'"
-          class="button special" style=" padding: 0 0.5em;height: 1.5em;
-         line-height: 1.4em; font-weight: 400; ">Ask us!</a>
-      </nav>
-      <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
-    </div>
-  </header>
+        [ngxScrollTo]="item[0]"
+        >{{ item[1] }}</a
+      >
+      <a
+        [ngxScrollToDuration]="ngxScrollToDuration"
+        [ngxScrollTo]="'inquiry'"
+        class="button special"
+        style="
+          padding: 0 0.5em;
+          height: 1.5em;
+          line-height: 1.4em;
+          font-weight: 400;
+        "
+        >Ask us!</a
+      >
+    </nav>
+    <a href="#navPanel" class="navPanelToggle"
+      ><span class="fa fa-bars"></span
+    ></a>
+  </div>
+</header>
 
-
- <!-- Content -->
+<!-- Content -->
 
 <router-outlet></router-outlet>
 
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="inner">
-      <div class="flex">
-        <div class="copyright">
-          &copy; 2020 PT. Trinusa Network. All Rights Reserved 
-        </div>
-        <ul class="icons">
-          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon fa-instagram"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
-        </ul>
+<!-- Footer -->
+<footer id="footer">
+  <div class="inner">
+    <div class="flex">
+      <div class="copyright">
+        &copy; 2020 PT. Trinusa Network. All Rights Reserved
       </div>
+      <ul class="icons">
+        <li>
+          <a href="#" class="icon fa-facebook"
+            ><span class="label">Facebook</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon fa-instagram"
+            ><span class="label">Twitter</span></a
+          >
+        </li>
+        <li>
+          <a href="#" class="icon fa-linkedin"
+            ><span class="label">linkedIn</span></a
+          >
+        </li>
+      </ul>
     </div>
-  </footer>
-
-
-
-
-
+  </div>
+</footer>
