@@ -1,3 +1,43 @@
+<!-- Header -->
+<header id="header">
+  <div class="inner">
+    <nav class="fixed-nav" id="nav">
+      <div class="flexbox">
+        <a
+          [ngxScrollToDuration]="ngxScrollToDuration"
+          [ngxScrollTo]="'header'"
+          class="logo item"
+        >
+          <img class="img item" src="./assets/images/Logo.png" alt="" />
+        </a>
+      </div>
+      <a href="">Home</a>
+      <a
+        style="cursor: pointer;"
+        *ngFor="let item of navItem"
+        [ngxScrollToDuration]="ngxScrollToDuration"
+        [ngxScrollTo]="item[0]"
+        >{{ item[1] }}</a
+      >
+      <a
+        [ngxScrollToDuration]="ngxScrollToDuration"
+        [ngxScrollTo]="'inquiry'"
+        class="button special"
+        style="
+          padding: 0 0.5em;
+          height: 1.5em;
+          line-height: 1.4em;
+          font-weight: 400;
+        "
+        >Ask us!</a
+      >
+    </nav>
+    <a href="#navPanel" class="navPanelToggle"
+      ><span class="fa fa-bars"></span
+    ></a>
+  </div>
+</header>
+
 <!-- Banner -->
 <section id="banner">
   <h1 style="color: black; margin-right: 50%;">Welcome to Trinusa Network</h1>

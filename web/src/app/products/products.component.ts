@@ -10,6 +10,13 @@ import { Items } from '../products.interface';
 export class ProductsComponent implements OnInit {
   products: Items['items'];
   details = false;
+  // add navItem in navbar
+  navItem = [
+    ['/', 'About Us'],
+    ['/', 'Products'],
+    ['/', 'Service'],
+    ['/', 'Contact'],
+  ];
 
   constructor(private productsService: ProductsService) {}
 
