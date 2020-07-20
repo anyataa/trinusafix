@@ -68,7 +68,7 @@
 
   <div
     class="card"
-    style="width: 18rem; height: 68rem; margin-left: 39%; margin-right: 50%;"
+    style="width: 18rem; height: 30rem; margin-left: 39%; margin-right: 50%;"
   >
     <a>
       <div class="img-small">
@@ -98,42 +98,62 @@
           placeholder="Short Description of your Product (up to 10 - 15 words approximately)"
         ></textarea>
       </p>
-      <p style="text-align: center; color: black;">
-        {{ product.specifications[0].title }}
-      </p>
-      <p style="font-size: 15px;" class="card-text">
-        <textarea
-          name=""
-          style="height: 15rem;"
-          type="multi line"
-          id=""
-          cols="30"
-          rows="10"
-          [(ngModel)]="product.specifications[0].detail"
-          placeholder="More detailed Description for your product this section can be as long as you want"
-        ></textarea>
-      </p>
-      <p style="font-size: 15px; margin-bottom: 0;" class="card-text">
-        <textarea
-          name=""
-          style="height: 6rem;"
-          type="multi line"
-          id=""
-          cols="30"
-          rows="10"
-          [(ngModel)]="product.image"
-          placeholder="ImageURL from ImgBB.com  please upload image first to ImgBB"
-        ></textarea>
-      </p>
-      <a style="margin-left: 30%;" href="http://www.imgBB.com">go to ImgBB</a>
-      <br /><br /><br />
-      <a
-        class="button other"
-        style="border-radius: 0.5rem; width: 15.5rem;"
-        (click)="onPost(product)"
-        >Add Product</a
-      >
     </div>
+  </div>
+  <div style="margin-left: 10%; margin-right: 10%;">
+    <br />
+    <!-- <p style="text-align: center;">
+      {{ product.specifications[0].title }}
+    </p> -->
+    <p style="font-size: 15px;" class="card-text">
+      <textarea
+        name=""
+        style="height: 15rem;"
+        type="multi line"
+        id=""
+        cols="30"
+        rows="10"
+        [(ngModel)]="product.specifications[0].detail"
+        placeholder="More detailed Description for your product this section can be as long as you want"
+      ></textarea>
+    </p>
+    <p style="font-size: 15px; margin-bottom: 0;" class="card-text">
+      <textarea
+        name=""
+        style="height: 6rem;"
+        type="multi line"
+        id=""
+        cols="30"
+        rows="10"
+        [(ngModel)]="product.image"
+        placeholder="ImageURL from ImgBB.com  please upload image first to ImgBB"
+      ></textarea>
+    </p>
+    <a href="http://www.imgBB.com">go to ImgBB</a>
+    <ol>
+      <li>
+        Make account in ImgBB <span style="font-weight: bold;">Required</span>
+      </li>
+      <li>
+        Log In to your account <span style="font-weight: bold;">Required</span>
+      </li>
+      <li>Upload your Image</li>
+      <li>
+        In embed code choose <span style="font-weight: bold;">Direct Link</span>
+      </li>
+      <li>
+        After you get the URL from ImgBB
+        <span style="font-weight: bold;">copy</span> the URL to the section
+        <span style="font-weight: bold;">ABOVE &#8593;</span>
+      </li>
+    </ol>
+
+    <a
+      class="button other"
+      style="border-radius: 0.5rem; width: 73.5rem;"
+      (click)="onPost(product)"
+      >Add Product</a
+    >
   </div>
 
   <br /><br /><br />

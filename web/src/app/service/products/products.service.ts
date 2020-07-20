@@ -3,14 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Items, prod, name } from '../../products.interface';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
   private productsUrl = 'http://45.64.99.144:9300/items';
-  private changeUrl = 'http://45.64.99.144:9300/item'
-  private deleteUrl = 'http://45.64.99.144:9300/delete'
+  private changeUrl = 'http://45.64.99.144:9300/item';
+  private deleteUrl = 'http://45.64.99.144:9300/delete';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -26,12 +25,12 @@ export class ProductsService {
     const url = `${this.productsUrl}/${id}`;
     return this.http.get<Items>(url);
   }
-  
-  addProduct(item:prod) {
-    return this.http.post<any>(this.changeUrl,item, this.httpOptions)
+
+  addProduct(item: prod) {
+    return this.http.post<any>(this.changeUrl, item, this.httpOptions);
   }
 
-  deleteProduct(delprod:any){
-    return this.http.post<any>(this.deleteUrl, delprod, this.httpOptions)
+  deleteProduct(delprod: any) {
+    return this.http.post<any>(this.deleteUrl, delprod, this.httpOptions);
   }
 }
