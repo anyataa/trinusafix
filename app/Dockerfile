@@ -1,6 +1,6 @@
 FROM python:3.7.7
 
-WORKDIR /trinusa/app
+WORKDIR /usr/src/app/server
 
 COPY requirements.txt .
 

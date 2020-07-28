@@ -7,9 +7,9 @@ import { Items, prod, name } from '../../products.interface';
   providedIn: 'root',
 })
 export class ProductsService {
-  private productsUrl = 'http://45.64.99.144:9300/items';
-  private changeUrl = 'http://45.64.99.144:9300/item';
-  private deleteUrl = 'http://45.64.99.144:9300/delete';
+  private productsUrl = '/api/items';
+  private changeUrl = '/api/item';
+  private deleteUrl = '/api/delete';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
