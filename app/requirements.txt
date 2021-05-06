@@ -1,5 +1,5 @@
 Flask-RESTful==0.3.8
 Flask-Mongoengine==0.9.5
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 python-dotenv==0.14.0
 gunicorn==20.0.4
